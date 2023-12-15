@@ -1,6 +1,6 @@
 import torch as t
 
-from src.env import make_envs, observe_envs
+from src.envs import make_envs, observe_envs
 from src.utils import seed
 from src.thermostat import Thermostat
 
