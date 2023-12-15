@@ -19,3 +19,8 @@ class Thermostat(nn.Module):
         for layer in self.net:
             x = layer(x)
         return x
+    
+    def loss_fn(
+        self,
+        obs: t.Tensor, 
+    )
