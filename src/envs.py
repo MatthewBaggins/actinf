@@ -22,3 +22,17 @@ def make_envs(
 
 def observe_envs(envs: t.Tensor, thermostat_i: Literal[1, 2]) -> t.Tensor:
     return envs.index_select(1, t.tensor([0, thermostat_i]))
+
+
+# How much one binary action nudges temperature
+ACTION_SIZE = 0.1  # TODO better name
+
+
+def act_in_envs(
+    envs: t.Tensor,  # [n_envs 3]
+    action_scores: t.Tensor,  # [n_envs n_actions(2 for now)]
+) -> t.Tensor:
+    actions = action_scores[:, 1] - action_scores[:, 0]
+    new_envs = envs.clone().detach()
+    new_envs[:, 0] += ACTION_SIZE * actions
+    return new_envs

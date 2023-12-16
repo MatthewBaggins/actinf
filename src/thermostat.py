@@ -1,6 +1,8 @@
+from fancy_einsum import einsum
 import torch as t
 from torch import nn
 from torch.distributions import Categorical, Normal
+import torch.nn.functional as F
 
 # from src.stats import pdf_normal
 
@@ -15,17 +17,17 @@ class Thermostat(nn.Module):
         self.temp = Normal(temp_mu, temp_sigma)
 
         self.hidden_dim = HIDDEN_DIM
-        self.net = nn.Sequential(
-            nn.Linear(2, HIDDEN_DIM), nn.ReLU(), nn.Linear(HIDDEN_DIM, 2)
-        )
+        self.fc1 = nn.Linear(1, HIDDEN_DIM)
+        self.fc2 = nn.Linear(HIDDEN_DIM, 2)
 
     def forward(
         self,
-        obs: t.Tensor,  # [2] temp pow1 (fully states are fully observable)
-    ) -> t.Tensor:  # [2] logits of action (-1 or 1)
-        x = obs
-        for layer in self.net:
-            x = layer(x)
+        temp: t.Tensor,  # [n_envs 1] (temp)
+    ) -> t.Tensor:  # [n_envs 2] logits of action (-1 or 1)
+        x = temp
+        x = self.fc1(x)
+        x = F.relu(x)
+        x = self.fc2(x)
         return x
 
     def loss_fn(
