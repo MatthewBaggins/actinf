@@ -1,0 +1,2 @@
+- [ ] switch to using torch.distributions.normal instead of pdf_normal
+- [ ] start doing loss function and training experiments
