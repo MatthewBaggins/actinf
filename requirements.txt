@@ -1,0 +1,8 @@
+fancy-einsum
+numpy
+pandas
+plotly
+pytest
+scipy
+torch
+typing_extensions
