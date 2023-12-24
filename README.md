@@ -1,0 +1,1 @@
+My attempts at code implementation of active inference agents. Very much work in progress. For now, no guarantees of backwards compatibility, any other compatibility, or even the code working as it should at all.
