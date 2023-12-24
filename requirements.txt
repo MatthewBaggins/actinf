@@ -1,8 +1,10 @@
 fancy-einsum
+nbformat
 numpy
 pandas
 plotly
 pytest
 scipy
 torch
+tqdm
 typing_extensions
