@@ -25,7 +25,7 @@ def observe_envs(envs: t.Tensor, thermostat_i: Literal[1, 2]) -> t.Tensor:
 
 
 # How much one binary action nudges temperature
-ACTION_SIZE = 0.1  # TODO better name
+ACTION_SIZE = 1e-3  # TODO better name
 
 
 def act_in_envs(

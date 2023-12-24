@@ -1,10 +1,7 @@
-from fancy_einsum import einsum
 import torch as t
 from torch import nn
 from torch.distributions import Categorical, Normal
 import torch.nn.functional as F
-
-# from src.stats import pdf_normal
 
 HIDDEN_DIM = 3
 
