@@ -1,4 +1,5 @@
 fancy-einsum
+ipywidgets
 nbformat
 numpy
 pandas

@@ -17,8 +17,8 @@ class TrainingHistory(NamedTuple):
 def train(
     model: Thermostat,
     optimizer: t.optim.Optimizer,
-    n_rounds: int = DEFAULT_N_ENVS,
-    n_envs: int = DEFAULT_N_ROUNDS,
+    n_rounds: int = DEFAULT_N_ROUNDS,
+    n_envs: int = DEFAULT_N_ENVS,
     *,
     progressbar: bool = True,
 ) -> TrainingHistory:
